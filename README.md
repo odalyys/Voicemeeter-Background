@@ -34,17 +34,11 @@ Windows does not let an external application insert an image *behind* another ap
 ## Run from source
 
 1. Install Python 3 for Windows.
-2. Run `run.bat`.
+2. Run `app.py`.
 3. Pick an image or a folder, then click **Activer / actualiser le fond** (enable / refresh background).
 4. Adjust the opacity (start at 10–25%).
 
 The app must stay open (it can be minimized) as long as the background is in use.
-
-## Build an EXE
-
-Run `build.bat`: the executable is created in `dist\VoicemeeterBackground.exe`.
-
-Note: unsigned PyInstaller executables are sometimes flagged by Windows SmartScreen or antivirus software (false positive). The code is open, and you can build the EXE yourself with `build.bat`.
 
 ## Privacy
 
