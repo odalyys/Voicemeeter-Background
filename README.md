@@ -1,61 +1,55 @@
 # Voicemeeter Background
 
-![Voicemeeter Background](docs/preview.png)
+![Voicemeeter Background](preview.png)
 
-*Illustration : interface simplifiée, pas la vraie fenêtre Voicemeeter.*
+*Illustration: simplified interface, not the real Voicemeeter window.*
 
-Affiche une image ou un diaporama **par-dessus la fenêtre Voicemeeter** (Standard, Banana, Potato) et la **suit en temps réel**. Windows uniquement. Aucun composant VMChroma, aucune DLL injectée, aucun fichier Voicemeeter modifié.
+Shows an image or a slideshow **on top of the Voicemeeter window** (Standard, Banana, Potato) and **follows it in real time**. Windows only. No VMChroma component, no injected DLL, no Voicemeeter file modified.
 
-> Projet indépendant, non affilié à VB-Audio. « Voicemeeter » est une marque de VB-Audio Software.
+> Independent project, not affiliated with VB-Audio. "Voicemeeter" is a trademark of VB-Audio Software.
 
-## Ce que fait le suivi
+## How the tracking works
 
-- Position, taille et redimensionnement de la fenêtre, suivis à environ 60 images par seconde.
-- Ordre des fenêtres : l'image reste juste au-dessus de Voicemeeter. Une fenêtre placée devant Voicemeeter recouvre aussi l'image.
-- Voicemeeter réduit, masqué ou sur un autre bureau virtuel : l'image se cache, puis revient dès qu'il réapparaît.
-- Voicemeeter en « toujours au premier plan » : l'image suit.
-- Écrans à 125 % / 150 % ou plusieurs écrans : coordonnées en pixels physiques (DPI-aware).
-- Redémarrage de Voicemeeter : la nouvelle fenêtre est retrouvée toute seule.
-- Fenêtre non cliquable et sans prise de focus : tu continues d'utiliser Voicemeeter normalement.
+- Window position, size and resizing are tracked at roughly 60 frames per second.
+- Window order: the image stays right above Voicemeeter. A window placed in front of Voicemeeter also covers the image.
+- Voicemeeter minimized, hidden or on another virtual desktop: the image hides, then comes back as soon as it reappears.
+- Voicemeeter set to "always on top": the image follows.
+- 125% / 150% scaling or multiple monitors: coordinates are in physical pixels (DPI-aware).
+- Voicemeeter restarted: the new window is found automatically.
+- The overlay is click-through and never takes focus, so you keep using Voicemeeter normally.
 
-## Important : limite de la méthode
+## Important: limitation of this method
 
-Windows ne permet pas à une application externe d'insérer une image *derrière* les contrôles d'une autre application. L'image est donc **mélangée par-dessus** toute la zone cliente : elle peut se superposer aux textes, boutons et vumètres. Garde une opacité de **10 à 25 %** pour que tout reste lisible.
+Windows does not let an external application insert an image *behind* another application's controls. The image is therefore **blended over** the whole client area and can overlap texts, buttons and meters. Keep the opacity between **10% and 25%** so everything stays readable.
 
-## Fonctionnalités
+## Features
 
-- Image unique ou diaporama depuis un dossier (ordre alphabétique ou aléatoire).
-- Opacité, assombrissement, flou, cadrage « remplir » ou « ajuster ».
-- Fondu entre les images du diaporama.
-- Option pour couvrir aussi la barre de titre.
-- Lancement automatique avec Windows.
-- Paramètres dans `%LOCALAPPDATA%\VoicemeeterBackground\settings.json`, journal dans `overlay.log`.
+- Single image or slideshow from a folder (alphabetical or random order).
+- Opacity, darkening, blur, "fill" or "fit" framing.
+- Cross-fade between slideshow images.
+- Option to also cover the title bar.
+- Start with Windows.
+- Settings in `%LOCALAPPDATA%\VoicemeeterBackground\settings.json`, log in `overlay.log`.
 
-## Lancer depuis les sources
+## Run from source
 
-1. Installe Python 3 pour Windows.
-2. Lance `run.bat`.
-3. Choisis une image ou un dossier, puis clique sur **Activer / actualiser le fond**.
-4. Règle l'opacité (commence à 10–25 %).
+1. Install Python 3 for Windows.
+2. Run `run.bat`.
+3. Pick an image or a folder, then click **Activer / actualiser le fond** (enable / refresh background).
+4. Adjust the opacity (start at 10–25%).
 
-L'application doit rester ouverte (elle peut être réduite) tant que le fond est utilisé.
+The app must stay open (it can be minimized) as long as the background is in use.
 
-## Créer un EXE
+## Build an EXE
 
-Lance `build.bat` : l'exécutable est créé dans `dist\VoicemeeterBackground.exe`.
+Run `build.bat`: the executable is created in `dist\VoicemeeterBackground.exe`.
 
-## Vie privée
+Note: unsigned PyInstaller executables are sometimes flagged by Windows SmartScreen or antivirus software (false positive). The code is open, and you can build the EXE yourself with `build.bat`.
 
-Aucune connexion réseau, aucune télémétrie. Les chemins d'images et les préférences restent sur ton PC.
+## Privacy
 
----
+No network access, no telemetry. Image paths and preferences stay on your PC.
 
-## English
+## License
 
-**Voicemeeter Background** shows an image or slideshow as a click-through overlay that follows the Voicemeeter window (position, size, z-order, minimise/restore, DPI scaling, virtual desktops, always-on-top). Windows only. No injection, no DLL, no changes to Voicemeeter.
-
-Because Windows cannot place a third-party window *behind* another app's controls, the image is blended *over* the window; keep opacity around 10–25 % for readability. Run `run.bat` from source or `build.bat` to build an EXE. Not affiliated with VB-Audio.
-
-## Licence
-
-MIT — voir [LICENSE](LICENSE).
+MIT see [LICENSE](LICENSE).
